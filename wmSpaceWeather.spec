@@ -47,14 +47,13 @@ install %{name}/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 #install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-gzip -9nf BUGS CHANGES HINTS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc BUGS CHANGES HINTS README
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/GetKp
 %{_mandir}/man1/*
