@@ -16,13 +16,13 @@ BuildRoot:	/tmp/%{name}-%{version}-root
 %define _mandir %{_prefix}/man
 
 %description
-wmSpaceWeather is a space weather monitor. The monitor shows:
-2 relativistic electron and 3 relativistic  proton flux levels
-at geosyncronous  orbit (currently from the NOAA GOES spacecraft),
-current Solar Flare X-ray flux, and the last 8 3-hour Kp index values.
+wmSpaceWeather is a space weather monitor. The monitor shows: 2 relativistic
+electron and 3 relativistic proton flux levels at geosyncronous orbit
+(currently from the NOAA GOES spacecraft), current Solar Flare X-ray flux,
+and the last 8 3-hour Kp index values.
 
 %description -l pl
-wmSpaceWeather jest monitorem pogody w przestrzeni kosmiczej. 
+wmSpaceWeather jest monitorem "pogody" w przestrzeni kosmiczej.
 
 %prep
 %setup -q
