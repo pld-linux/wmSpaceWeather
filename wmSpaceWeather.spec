@@ -1,8 +1,8 @@
 Summary: 	wmSpaceWeather is a space weather monitor
 Summary(lp):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name: 		wmSpaceWeather
-Version:	1.02
-Release:	2
+Version:	1.04
+Release:	1
 Copyright:	GPL
 Group:          X11/Window Managers/Tools
 Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
@@ -27,6 +27,7 @@ wmSpaceWeather jest monitorem pogody w przestrzeni kosmiczej.
 %setup -q
 
 %build
+make -C %{name} clean
 make -C %{name} \
         CFLAGS="$RPM_OPT_FLAGS -Wall"
 
@@ -58,6 +59,11 @@ rm -rf $RPM_BUILD_ROOT
 /etc/X11/wmconfig/%{name}
 
 %changelog
+* Mon May 24 1999 Piotr Czerwiñski <pius@pld.org.pl> 
+  [1.04-1]
+- updated to 1.04,
+- modified %build.
+
 * Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
   [1.02-2]
 - spec file modified for PLD use,
