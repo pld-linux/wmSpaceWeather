@@ -19,7 +19,7 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
  
  
 -    $grabcmd = "cd /tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/indices/DGD.txt";
-+    $grabcmd = "cd ~/tmp; wget --passive-ftp --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
++    $grabcmd = "cd ~/tmp; wget --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
      system "$grabcmd";
  
  
