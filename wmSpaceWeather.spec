@@ -8,8 +8,8 @@ Group:          X11/Window Managers/Tools
 Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
 Source0: 	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
 Source1:	wmSpaceWeather.desktop
-BuildPrereq:    XFree86-devel
-BuildPrereq:    xpm-devel
+BuildRequires:    XFree86-devel
+BuildRequires:    xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
