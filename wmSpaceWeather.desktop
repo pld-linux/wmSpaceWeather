@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=wmSpaceWeather
+Comment=Space Weather Monitor
+Comment[pl]=Monitor Pogody Kosmicznej
+Exec=wmSpaceWeather
+Terminal=0
+Type=Application
