@@ -2,12 +2,12 @@ Summary: 	wmSpaceWeather is a space weather monitor
 Summary(lp):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name: 		wmSpaceWeather
 Version:	1.04
-Release:	1
+Release:	2
 Copyright:	GPL
 Group:          X11/Window Managers/Tools
 Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
 Source0: 	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
-Source1:	wmSpaceWeather.wmconfig
+Source1:	wmSpaceWeather.desktop
 BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
@@ -36,13 +36,13 @@ make -C %{name} \
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
-        $RPM_BUILD_ROOT/etc/X11/wmconfig
+        $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
 install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
 install %{name}/GetKp $RPM_BUILD_ROOT%{_bindir}
 install %{name}/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/wmconfig/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/X11/applnk/DockApplets
 
 gzip -9nf BUGS CHANGES HINTS README \
         $RPM_BUILD_ROOT%{_mandir}/man1/*
@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/GetKp
 %{_mandir}/man1/*
 
-/etc/X11/wmconfig/%{name}
+/etc/X11/applnk/DockApplets/wmSpaceWeather.desktop
 
 %changelog
 * Mon May 24 1999 Piotr Czerwiñski <pius@pld.org.pl> 
