@@ -23,8 +23,8 @@ Solar Flare X-ray flux, and the last 8 3-hour Kp index values.
 wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
 Pokazuje 2 wzglêdne elektronowe i 3 wzglêdne protonowe poziomy
 strumieni na geosynchronicznej orbicie (aktualnie sonda NOAA GEOS),
-aktulne strumienie promieni X wiatru s³onecznego oraz ostatnie 8
-3-godzinnych warto¶ci indexu Kp.
+aktualne strumienie promieni X wiatru s³onecznego oraz ostatnie 8
+3-godzinnych warto¶ci indeksu Kp.
 
 %prep
 %setup -q
