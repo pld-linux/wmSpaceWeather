@@ -2,12 +2,13 @@ Summary:	wmSpaceWeather is a space weather monitor
 Summary(pl):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
-Release:	5
+Release:	6
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://nis-www.lanl.gov/~mgh/WindowMaker/%{name}-%{version}.tar.gz
 # Source0-md5:	b91415bc9e234d3e6fcd93d34c7fd680
 Source1:	%{name}.desktop
+Patch0:		%{name}-fix.patch
 URL:		http://nis-www.lanl.gov/~mgh/WindowMaker/DockApps.shtml
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -28,6 +29,7 @@ aktualne strumienie promieni X wiatru s³onecznego oraz ostatnie 8
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__make} -C %{name} clean
