@@ -59,17 +59,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 /etc/X11/applnk/DockApplets/wmSpaceWeather.desktop
-
-%changelog
-* Mon May 24 1999 Piotr Czerwiñski <pius@pld.org.pl> 
-  [1.04-1]
-- updated to 1.04,
-- modified %build.
-
-* Sat May 15 1999 Piotr Czerwiñski <pius@pld.org.pl>
-  [1.02-2]
-- spec file modified for PLD use,
-- package is FHS 2.0 compliant.
-
-* Tue Feb 9 1998 Ian Macdonald <ianmacd@xs4all.nl>
-- first RPM release.
