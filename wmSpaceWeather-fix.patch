@@ -1,6 +1,6 @@
 diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp
 --- wmSpaceWeather-1.04/wmSpaceWeather/GetKp	1999-02-12 06:42:01.000000000 +0100
-+++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:24:58.024716672 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:31:31.232939936 +0100
 @@ -10,16 +10,16 @@
  
      ($Year, $Month, $Day) = &year_month_day();
@@ -58,7 +58,7 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
  	printf TmpFile "$key $Result{$key}\n";
 diff -urN wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c
 --- wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c	1999-02-18 18:57:45.000000000 +0100
-+++ wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c	2004-11-09 12:16:42.883989504 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c	2004-11-09 12:33:02.225107024 +0100
 @@ -118,6 +118,8 @@
  long		CurrentLocalTime;
  int			height, UpToDate, LEDOn;
@@ -68,15 +68,18 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c wmSpaceWeather-1.0
  
  
  double		jd(), CurrentJD, LatestAvailJD, tim, DeltaT;
-@@ -278,7 +280,11 @@
+@@ -278,7 +280,14 @@
      	    /*
      	     *  Read in Kp values
      	     */
 -    	    if ((fp = fopen("/tmp/LatestKp.txt", "r")) != NULL){
-+	    strncpy(tmpfilename, getenv("TMPDIR"), MAXFILENAME);
-+	    tmpfilename[MAXFILENAME] = 0;
-+	    strncat(tmpfilename, "/LatestKp.txt", MAXFILENAME - strlen(tmpfilename));
-+	    tmpfilename[MAXFILENAME] = 0;
++	    if (getenv("TMPDIR") != NULL) {
++		    strncpy(tmpfilename, getenv("TMPDIR"), MAXFILENAME);
++		    tmpfilename[MAXFILENAME] = 0;		 
++	    	strncat(tmpfilename, "/LatestKp.txt", MAXFILENAME - strlen(tmpfilename));
++	    	tmpfilename[MAXFILENAME] = 0;
++	    } else
++		    strcpy(tmpfilename, "/tmp/LatestKp.txt");
 +    	    if ((fp = fopen(tmpfilename, "r")) != NULL){
  
      	        for (i=0; i<8; ++i){
