@@ -1,0 +1,2 @@
+- added wmSpaceWeather-fix.patch (working URL and safer temp file handling)
+- R: 5 --> 6
