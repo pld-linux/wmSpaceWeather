@@ -2,7 +2,7 @@ Summary:	wmSpaceWeather is a space weather monitor
 Summary(pl):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Window Managers/Tools
 Group(de):	X11/Fenstermanager/Werkzeuge
@@ -24,6 +24,10 @@ Solar Flare X-ray flux, and the last 8 3-hour Kp index values.
 
 %description -l pl
 wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
+Pokazuje 2 wzglêdne elektronowe i 3 wzglêdne protonowe poziomy
+strumieni na geosynchronicznej orbicie (aktualnie sonda NOAA GEOS),
+aktulne strumienie promieni X wiatru s³onecznego oraz ostatnie 8
+3-godzinnych warto¶ci indexu Kp.
 
 %prep
 %setup -q
@@ -52,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {BUGS,CHANGES,HINTS,README}.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/GetKp
 %{_mandir}/man1/*
