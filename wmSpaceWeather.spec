@@ -2,7 +2,7 @@ Summary:	wmSpaceWeather is a space weather monitor
 Summary(pl):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
-Release:	5.1
+Release:	5.2
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://nis-www.lanl.gov/~mgh/WindowMaker/%{name}-%{version}.tar.gz
