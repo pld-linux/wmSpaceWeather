@@ -1,6 +1,6 @@
 diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp
 --- wmSpaceWeather-1.04/wmSpaceWeather/GetKp	1999-02-12 06:42:01.000000000 +0100
-+++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:15:36.615063912 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:24:58.024716672 +0100
 @@ -10,16 +10,16 @@
  
      ($Year, $Month, $Day) = &year_month_day();
@@ -37,7 +37,7 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
      # Add in very latest stuff
      #
 -    $grabcmd = "cd /tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/latest/curind.txt";
-+    $grabcmd = "cd ~/tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/latest/curind.txt";
++    $grabcmd = "cd ~/tmp; wget --tries 2 -q http://www.sec.noaa.gov/ftpdir/latest/curind.txt";
      system "$grabcmd";
      %lmonstr = ( "Jan", 1, "Feb", 2, "Mar", 3, "Apr", 4, "May", 5, "Jun", 6, "Jul", 7, "Aug", 8, "Sep", 9, "Oct", 10, "Nov", 11, "Dec", 12);
  
