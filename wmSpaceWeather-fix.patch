@@ -19,7 +19,7 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
  
  
 -    $grabcmd = "cd /tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/indices/DGD.txt";
-+    $grabcmd = "cd ~/tmp; wget --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
++    $grabcmd = "cd ~/tmp; wget --passive-ftp --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
      system "$grabcmd";
  
  
@@ -56,3 +56,28 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
      foreach $key  (sort keys %Result ) {
  	if ($Result{$key} > 10) { $Result{$key} = -1; }
  	printf TmpFile "$key $Result{$key}\n";
+diff -urN wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c
+--- wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c	1999-02-18 18:57:45.000000000 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c	2004-11-09 12:12:53.816813008 +0100
+@@ -118,6 +118,8 @@
+ long		CurrentLocalTime;
+ int			height, UpToDate, LEDOn;
+ double		UT, TU, TU2, TU3, T0, gmst, hour24();
++#define MAXFILENAME 255
++char tmpfilename[MAXFILENAME+1];
+ 
+ 
+ double		jd(), CurrentJD, LatestAvailJD, tim, DeltaT;
+@@ -278,7 +280,11 @@
+     	    /*
+     	     *  Read in Kp values
+     	     */
+-    	    if ((fp = fopen("/tmp/LatestKp.txt", "r")) != NULL){
++	    strncpy(tmpfilename, getenv("HOME"), MAXFILENAME);
++	    tmpfilename[MAXFILENAME] = 0;
++	    strncat(tmpfilename, "/LatestKp.txt", MAXFILENAME - strlen(tmpfilename));
++	    tmpfilename[MAXFILENAME] = 0;
++    	    if ((fp = fopen(tmpfilename, "r")) != NULL){
+ 
+     	        for (i=0; i<8; ++i){
+ 	    	    fscanf(fp, "%ld %d", &TimeTag[i], &Kp[i]);
