@@ -12,7 +12,7 @@ BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
 BuildRoot:      /tmp/%{name}-%{version}-root
 
-%define _prefix         /usr/X11R6
+%define _prefix	/usr/X11R6
 
 %description
 wmSpaceWeather is a space weather monitor. The monitor shows:
@@ -64,4 +64,4 @@ rm -rf $RPM_BUILD_ROOT
 - package is FHS 2.0 compliant.
 
 * Tue Feb 9 1998 Ian Macdonald <ianmacd@xs4all.nl>
-- first RPM release
+- first RPM release.
