@@ -10,7 +10,7 @@ Source0: 	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
 Source1:	wmSpaceWeather.wmconfig
 BuildPrereq:    XFree86-devel
 BuildPrereq:    xpm-devel
-BuildRoot:      /tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define _prefix	/usr/X11R6
 
