@@ -1,13 +1,14 @@
-Summary: 	wmSpaceWeather is a space weather monitor
-Summary(lp):	wmSpaceWeather jest monitorem pogody kosmicznej
-Name: 		wmSpaceWeather
+Summary:	wmSpaceWeather is a space weather monitor
+Summary(pl):	wmSpaceWeather jest monitorem pogody kosmicznej
+Name:		wmSpaceWeather
 Version:	1.04
 Release:	2
-Copyright:	GPL
-Group:          X11/Window Managers/Tools
-Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
-Source0: 	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
-Source1:	wmSpaceWeather.desktop
+License:	GPL
+Group:		X11/Window Managers/Tools
+Group(de):	X11/Fenstermanager/Werkzeuge
+Group(pl):	X11/Zarz±dcy Okien/Narzêdzia
+Source0:	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
 BuildRequires:	XFree86-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -15,10 +16,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define 	_mandir 	%{_prefix}/man
 
 %description
-wmSpaceWeather is a space weather monitor. The monitor shows: 2 relativistic
-electron and 3 relativistic proton flux levels at geosyncronous orbit
-(currently from the NOAA GOES spacecraft), current Solar Flare X-ray flux,
-and the last 8 3-hour Kp index values.
+wmSpaceWeather is a space weather monitor. The monitor shows: 2
+relativistic electron and 3 relativistic proton flux levels at
+geosyncronous orbit (currently from the NOAA GOES spacecraft), current
+Solar Flare X-ray flux, and the last 8 3-hour Kp index values.
 
 %description -l pl
 wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
@@ -29,22 +30,21 @@ wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
 %build
 %{__make} -C %{name} clean
 %{__make} -C %{name} \
-        CFLAGS="$RPM_OPT_FLAGS -Wall" \
-	INCDIR="-I/usr/X11R6/include"
+        CFLAGS="%{rpmcflags} -Wall" \
+	INCDIR="-I%{_includedir}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
         $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
+install %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
 install %{name}/GetKp $RPM_BUILD_ROOT%{_bindir}
 install %{name}/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
-gzip -9nf BUGS CHANGES HINTS README \
-        $RPM_BUILD_ROOT%{_mandir}/man1/*
+gzip -9nf BUGS CHANGES HINTS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
