@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=wmSpaceWeather
+Name=WmSpaceWeather
 Comment=Space Weather Monitor
 Comment[pl]=Monitor Pogody Kosmicznej
 Exec=wmSpaceWeather
