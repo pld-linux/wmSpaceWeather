@@ -57,4 +57,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/%{name}
 %attr(755,root,root) %{_bindir}/GetKp
 %{_mandir}/man1/*
-#%{_applnkdir}/DockApplets/wmSpaceWeather.desktop
+#%%{_applnkdir}/DockApplets/wmSpaceWeather.desktop
