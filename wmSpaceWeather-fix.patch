@@ -1,25 +1,25 @@
 diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp
 --- wmSpaceWeather-1.04/wmSpaceWeather/GetKp	1999-02-12 06:42:01.000000000 +0100
-+++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:36:54.069861264 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/GetKp	2004-11-09 12:58:27.761190288 +0100
 @@ -10,16 +10,16 @@
  
      ($Year, $Month, $Day) = &year_month_day();
      
 -    if (-e "/tmp/DGD.txt"){
 -	unlink("/tmp/DGD.txt");
-+    if (-e "~/tmp/DGD.txt"){
-+	unlink("~/tmp/DGD.txt");
++    if (-e "$ENV{TMPDIR}/DGD.txt"){
++	unlink("$ENV{TMPDIR}/DGD.txt");
      }
  
 -    if (-e "/tmp/curind.txt"){
 -	unlink("/tmp/curind.txt");
-+    if (-e "~/tmp/curind.txt"){
-+	unlink("~/tmp/curind.txt");
++    if (-e "$ENV{TMPDIR}/curind.txt"){
++	unlink("$ENV{TMPDIR}/curind.txt");
      }
  
  
 -    $grabcmd = "cd /tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/indices/DGD.txt";
-+    $grabcmd = "cd ~/tmp; wget -r --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
++    $grabcmd = "cd $ENV{TMPDIR}; wget -r --tries 2 -q http://www.sec.noaa.gov/ftpdir/indices/DGD.txt";
      system "$grabcmd";
  
  
@@ -28,7 +28,7 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
  
  
 -    open(TmpFile, "/tmp/DGD.txt");
-+    open(TmpFile, "~/tmp/DGD.txt");
++    open(TmpFile, "$ENV{TMPDIR}/DGD.txt");
      while (<TmpFile>){
          chop;
  	if ($_ =~ /^\d{4} \d{2} \d{2}\s*\d*/ ){
@@ -37,13 +37,13 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
      # Add in very latest stuff
      #
 -    $grabcmd = "cd /tmp; wget --passive-ftp --tries 2 -q ftp://www.sec.noaa.gov/pub/latest/curind.txt";
-+    $grabcmd = "cd ~/tmp; wget -r --tries 2 -q http://www.sec.noaa.gov/ftpdir/latest/curind.txt";
++    $grabcmd = "cd $ENV{TMPDIR}; wget -r --tries 2 -q http://www.sec.noaa.gov/ftpdir/latest/curind.txt";
      system "$grabcmd";
      %lmonstr = ( "Jan", 1, "Feb", 2, "Mar", 3, "Apr", 4, "May", 5, "Jun", 6, "Jul", 7, "Aug", 8, "Sep", 9, "Oct", 10, "Nov", 11, "Dec", 12);
  
  @lval = ($lyear, $lmonstr{$lmon}, $ldom);
 -    open(TmpFile, "/tmp/curind.txt");
-+    open(TmpFile, "~/tmp/curind.txt");
++    open(TmpFile, "$ENV{TMPDIR}/curind.txt");
      while (<TmpFile>){
          chop;
  	if ($_ =~ /^:Geomagnetic_Values: (\d{4}) (.*) (\d{1,2})/){
@@ -52,13 +52,13 @@ diff -urN wmSpaceWeather-1.04/wmSpaceWeather/GetKp wmSpaceWeather-1.04.patch/wmS
      }
  
 -    open(TmpFile, ">/tmp/LatestKp.txt");
-+    open(TmpFile, ">~/tmp/LatestKp.txt");
++    open(TmpFile, ">$ENV{TMPDIR}/LatestKp.txt");
      foreach $key  (sort keys %Result ) {
  	if ($Result{$key} > 10) { $Result{$key} = -1; }
  	printf TmpFile "$key $Result{$key}\n";
 diff -urN wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c
 --- wmSpaceWeather-1.04/wmSpaceWeather/wmSpaceWeather.c	1999-02-18 18:57:45.000000000 +0100
-+++ wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c	2004-11-09 12:33:02.225107024 +0100
++++ wmSpaceWeather-1.04.patch/wmSpaceWeather/wmSpaceWeather.c	2004-11-09 12:50:22.095022768 +0100
 @@ -118,6 +118,8 @@
  long		CurrentLocalTime;
  int			height, UpToDate, LEDOn;
