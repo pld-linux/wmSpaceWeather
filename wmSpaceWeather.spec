@@ -9,7 +9,6 @@ Group(pl):      X11/Zarz±dcy Okien/Narzêdzia
 Source0: 	ftp://leadbelly.lanl.gov/pub/mgh/%{name}-%{version}.tar.gz
 Source1:	wmSpaceWeather.desktop
 BuildRequires:	XFree86-devel
-BuildRequires:	xpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define 	_prefix		/usr/X11R6
