@@ -32,14 +32,14 @@ aktualne strumienie promieni X wiatru s³onecznego oraz ostatnie 8
 %build
 %{__make} -C %{name} clean
 %{__make} -C %{name} \
-        CFLAGS="%{rpmcflags} -Wall" \
+	CFLAGS="%{rpmcflags} -Wall" \
 	INCDIR="-I%{_includedir}" \
 	LIBDIR="-L/usr/X11R6/%{_lib}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
-        $RPM_BUILD_ROOT%{_desktopdir}/docklets
+	$RPM_BUILD_ROOT%{_desktopdir}/docklets
 
 install %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
 install %{name}/GetKp $RPM_BUILD_ROOT%{_bindir}
