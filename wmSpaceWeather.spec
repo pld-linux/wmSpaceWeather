@@ -14,6 +14,7 @@ BuildRoot:	/tmp/%{name}-%{version}-root
 
 %define 	_prefix		/usr/X11R6
 %define 	_mandir 	%{_prefix}/man
+%define		_applnkdir	%{_datadir}/applnk
 
 %description
 wmSpaceWeather is a space weather monitor. The monitor shows: 2 relativistic
@@ -22,7 +23,7 @@ electron and 3 relativistic proton flux levels at geosyncronous orbit
 and the last 8 3-hour Kp index values.
 
 %description -l pl
-wmSpaceWeather jest monitorem "pogody" w przestrzeni kosmiczej.
+wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
 
 %prep
 %setup -q
@@ -36,17 +37,16 @@ make -C %{name} \
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1} \
-        $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+        $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 install -s %{name}/%{name} $RPM_BUILD_ROOT%{_bindir}
 install %{name}/GetKp $RPM_BUILD_ROOT%{_bindir}
 install %{name}/%{name}.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-install %{SOURCE1} $RPM_BUILD_ROOT/usr/X11R6/share/applnk/DockApplets
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/DockApplets
 
 gzip -9nf BUGS CHANGES HINTS README \
         $RPM_BUILD_ROOT%{_mandir}/man1/*
-
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -58,4 +58,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/GetKp
 %{_mandir}/man1/*
 
-/usr/X11R6/share/applnk/DockApplets/wmSpaceWeather.desktop
+%{_applnkdir}/DockApplets/wmSpaceWeather.desktop
