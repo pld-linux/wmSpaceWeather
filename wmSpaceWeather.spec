@@ -30,7 +30,8 @@ wmSpaceWeather jest monitorem pogody w przestrzeni kosmiczej.
 %build
 make -C %{name} clean
 make -C %{name} \
-        CFLAGS="$RPM_OPT_FLAGS -Wall"
+        CFLAGS="$RPM_OPT_FLAGS -Wall" \
+	INCDIR="-I/usr/X11R6/include"
 
 %install
 rm -rf $RPM_BUILD_ROOT
