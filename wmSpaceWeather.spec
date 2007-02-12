@@ -1,5 +1,5 @@
 Summary:	wmSpaceWeather is a space weather monitor
-Summary(pl.UTF-8):   wmSpaceWeather jest monitorem pogody kosmicznej
+Summary(pl.UTF-8):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
 Release:	7
