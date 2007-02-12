@@ -1,5 +1,5 @@
 Summary:	wmSpaceWeather is a space weather monitor
-Summary(pl):	wmSpaceWeather jest monitorem pogody kosmicznej
+Summary(pl.UTF-8):   wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
 Release:	7
@@ -20,14 +20,14 @@ relativistic electron and 3 relativistic proton flux levels at
 geosynchronous orbit (currently from the NOAA GOES spacecraft),
 current Solar Flare X-ray flux, and the last 8 3-hour Kp index values.
 
-%description -l pl
+%description -l pl.UTF-8
 wmSpaceWeather jest monitorem pogody w przestrzeni kosmicznej.
-Pokazuje poziom strumienia relatywistycznych elektronÛw (oddzielnie
-dla 2 przedzia≥Ûw energii) oraz warto∂ci strumienia relatywistycznych
-protonÛw (oddzielnie dla 3 przedzia≥Ûw energii) mierzonego na orbicie
-geosynchronicznej (aktualnie sond± NOAA GEOS), aktualne strumienie
-promieniowania rentgenowskiego z wiatru s≥onecznego oraz ostatnie 8
-3-godzinnych warto∂ci indeksu Kp.
+Pokazuje poziom strumienia relatywistycznych elektron√≥w (oddzielnie
+dla 2 przedzia≈Ç√≥w energii) oraz warto≈õci strumienia relatywistycznych
+proton√≥w (oddzielnie dla 3 przedzia≈Ç√≥w energii) mierzonego na orbicie
+geosynchronicznej (aktualnie sondƒÖ NOAA GEOS), aktualne strumienie
+promieniowania rentgenowskiego z wiatru s≈Çonecznego oraz ostatnie 8
+3-godzinnych warto≈õci indeksu Kp.
 
 %prep
 %setup -q
