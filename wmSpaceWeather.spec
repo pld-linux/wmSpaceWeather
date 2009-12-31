@@ -2,7 +2,7 @@ Summary:	wmSpaceWeather is a space weather monitor
 Summary(pl.UTF-8):	wmSpaceWeather jest monitorem pogody kosmicznej
 Name:		wmSpaceWeather
 Version:	1.04
-Release:	7
+Release:	8
 License:	GPL
 Group:		X11/Window Managers/Tools
 Source0:	http://nis-www.lanl.gov/~mgh/WindowMaker/%{name}-%{version}.tar.gz
@@ -10,7 +10,8 @@ Source0:	http://nis-www.lanl.gov/~mgh/WindowMaker/%{name}-%{version}.tar.gz
 Source1:	%{name}.desktop
 Patch0:		%{name}-fix.patch
 URL:		http://nis-www.lanl.gov/~mgh/WindowMaker/DockApps.shtml
-BuildRequires:	XFree86-devel
+BuildRequires:  xorg-lib-libXext-devel
+BuildRequires:  xorg-lib-libXpm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 
@@ -38,7 +39,7 @@ promieniowania rentgenowskiego z wiatru słonecznego oraz ostatnie 8
 %{__make} -C %{name} \
 	CFLAGS="%{rpmcflags} -Wall" \
 	INCDIR="-I%{_includedir}" \
-	LIBDIR="-L/usr/X11R6/%{_lib}"
+	LIBDIR="-L/usr/%{_lib}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
